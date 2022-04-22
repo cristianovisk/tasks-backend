@@ -21,5 +21,11 @@ pipeline {
                 }
             }
         }
+        stage ('Check Container Vulns') {
+            steps {
+                bat 'docker run aquasec/trivy image tomcat:8.5.50-jdk8'
+            }
+        }
     }
 }
+
