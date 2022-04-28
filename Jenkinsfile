@@ -11,6 +11,11 @@ pipeline {
                 bat 'mvn test'
             }
         }
+        stage ('Horusec') {
+            steps {
+                bat 'horusec start -p . -o "json" -O "./output.json"'
+            }
+        }
         stage ('Sonar Analysis') {
             environment {
                 scannerHome = tool 'Sonar_Scanner'
@@ -23,7 +28,7 @@ pipeline {
         }
         stage ('Check Container Vulns') {
             steps {
-                bat 'docker run aquasec/trivy image tomcat:8.5.50-jdk8'
+                bat 'docker run --rm aquasec/trivy image tomcat:8.5.50-jdk8'
             }
         }
     }
