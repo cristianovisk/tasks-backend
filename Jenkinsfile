@@ -13,7 +13,7 @@ pipeline {
         }
         stage ('Horusec') {
             steps {
-                bat 'horusec start -p . -o "json" -O "./output.json"'
+                bat 'horusec start -p .'
             }
         }
         stage ('Sonar Analysis') {
