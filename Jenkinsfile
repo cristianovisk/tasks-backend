@@ -26,9 +26,14 @@ pipeline {
         //        }
         //    }
         //}
-        stage ('Check Container Vulns') {
+        //stage ('Check Container Vulns') {
+        //    steps {
+        //        bat 'docker run --rm aquasec/trivy image tomcat:8.5.50-jdk8'
+        //    }
+        //}
+        stage ('Deploy App') {
             steps {
-                bat 'docker run --rm aquasec/trivy image tomcat:8.5.50-jdk8'
+                bat "curl -v -u admin:210794 -T target/tasks-backend.war 'http://127.0.0.1:8001/manager/text/deploy?path=/tasks-backend&update=true'"
             }
         }
     }
