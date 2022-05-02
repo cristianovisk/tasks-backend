@@ -11,11 +11,11 @@ pipeline {
                 bat 'mvn test'
             }
         }
-        stage ('Horusec') {
-            steps {
-                bat 'horusec start -p . -e true'
-            }
-        }
+        //stage ('Horusec') {
+        //    steps {
+        //       bat 'horusec start -p . -e true'
+        //    }
+        //}
         //stage ('Sonar Analysis') {
         //    environment {
         //        scannerHome = tool 'Sonar_Scanner'
