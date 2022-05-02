@@ -13,7 +13,7 @@ pipeline {
         }
         stage ('Horusec') {
             steps {
-               bat 'horusec start -p . -e true  -s "LOW, MEDIUM"'
+               bat 'horusec start -p . -s "UNKNOWN, LOW, MEDIUM"'
             }
         }
         stage ('Sonar Analysis') {
